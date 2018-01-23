@@ -1,12 +1,16 @@
+/* 
+    Vson
+    create in 2018-01-23
+ */
 function mouseInit(){
     
 }
 
 
-mouseInit.prototype.startTop = 0;
+mouseInit.prototype.startTop = 0;   //记录鼠标触发相对页面位置
 
-mouseInit.prototype.startPos = 0;
-mouseInit.ifDown = false;
+mouseInit.prototype.startPos = 0;   //记录鼠标触发相对屏幕位置
+mouseInit.ifDown = false;           //记录是否触发滑动
 
 mouseInit.prototype.ifSupportTouch = function(){
     return "ontouchend" in document ? true : false;
@@ -60,6 +64,10 @@ mouseInit.prototype.mouseAttach = function(){
 mouseInit.prototype.myClick = function(event){
     var clickEvent;
     var targetElement = event.target;
+/*     
+    创建event事件
+    此处initMouseEvent部分机型已经淘汰，需用MouseEvent兼容
+     */
     try{
         clickEvent = document.createEvent('MouseEvents');
         clickEvent.initMouseEvent('click', true, true, window, 1, event.screenX, event.screenY, event.clientX, event.clientY, false, false, false, false, 0, null);
@@ -75,10 +83,10 @@ mouseInit.prototype.myClick = function(event){
             "metaKey":false,
             "button":0
         }
-        clickEvent = new MouseEvent(initEvent)
+        clickEvent = new MouseEvent('click',initEvent)
     }
     clickEvent.isMyClick=true;   //识别是否进入自带点击事件
-    targetElement.dispatchEvent(clickEvent);
+    targetElement.dispatchEvent(clickEvent);    //立即触发事件
 }
 
 
