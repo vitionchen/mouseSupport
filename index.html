@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>触屏支持</title>
+    <style>
+        html,body{
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            -moz-user-select: none; -khtml-user-select: none; user-select: none;
+        }
+        #scrollTap{
+            width: 100%;
+            height: 100%;
+            overflow: auto;            
+        }
+        #scrollTap p{
+            height: 100px;
+            line-height: 100px;
+            box-sizing: border-box;
+            border: 1px #eee solid;
+            background-color: blanchedalmond
+        }
+    </style>
+<body>
+    <div id="scrollTap">
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+        <p>sdfsdfsdf</p>
+    </div>
+    <script src="./mouseSupport.js"></script>
+    <script>
+        var myTry = new mouseInit();
+        myTry.mouseAttach('scrollTap');
+        var p =document.getElementsByTagName('p');
+        for(var i = 0 ; i < p.length ; i++){
+            p[i].addEventListener('click',function(){
+                console.log('p')
+            })
+        }
+    </script>
+</body>
+</html>
